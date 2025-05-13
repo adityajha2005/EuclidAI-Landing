@@ -64,7 +64,7 @@ export default function About() {
         </motion.nav>
 
         <div className="flex-1 flex items-center justify-end space-x-4">
-          {/* <ThemeToggle /> */}
+          <ThemeToggle />
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}

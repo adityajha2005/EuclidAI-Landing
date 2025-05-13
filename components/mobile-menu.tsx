@@ -55,7 +55,7 @@ export function MobileMenu() {
                   <span className="font-medium text-gray-900 dark:text-white">Euclid User</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <ThemeToggle />
+                  {/* <ThemeToggle /> */}
                   <Button variant="ghost" size="icon" onClick={closeMenu} className="hover:bg-gray-100 dark:hover:bg-gray-700">
                     <X className="h-5 w-5" />
                   </Button>
