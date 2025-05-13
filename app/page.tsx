@@ -96,11 +96,11 @@ export default function Home() {
     } catch (err) {
       setIsLoading(false)
       setError(err instanceof Error ? err.message : "Failed to register")
-      toast({
-        title: "Error",
-        description: err instanceof Error ? err.message : "Failed to register",
-        variant: "destructive",
-      })
+      // toast({
+      //   title: "Error",
+      //   description: err instanceof Error ? err.message : "Failed to register",
+      //   variant: "destructive",
+      // })
     }
   }
 

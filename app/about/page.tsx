@@ -1,14 +1,21 @@
 "use client"
 
 import type React from "react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { AnimatedBackground } from "@/components/animated-background"
 import { MobileMenu } from "@/components/mobile-menu"
 import Link from "next/link"
 import { Suspense } from "react"
+import { ChevronDown } from "lucide-react"
+import { useState } from "react"
 
 export default function About() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
+  const closeMenu = () => setIsMenuOpen(false)
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-start bg-gray-50 dark:bg-gray-900">
       <AnimatedBackground />
@@ -16,23 +23,25 @@ export default function About() {
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 flex items-center justify-between px-6 py-4 z-10 bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-sm">
         <div className="flex-1 flex items-center justify-start">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-200"
-          >
-            Euclid
-          </motion.div>
+          <Link href="/">
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-200"
+            >
+              Euclid
+            </motion.div>
+          </Link>
         </div>
 
         <motion.nav
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex-1 flex items-center justify-center"
+          className="hidden md:flex flex-1 items-center justify-center"
         >
-          <div className="flex items-center space-x-[120px]">
+          <div className="flex items-center space-x-8 lg:space-x-12">
             <Link 
               href="/" 
               className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
@@ -54,7 +63,60 @@ export default function About() {
           </div>
         </motion.nav>
 
-        <div className="flex-1 flex items-center justify-end space-x-4">
+        {/* Mobile Navigation */}
+        <div className="md:hidden flex-1 flex items-center justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="relative"
+          >
+            <button 
+              onClick={toggleMenu}
+              className="flex items-center space-x-1 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+            >
+              <span>Menu</span>
+              <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isMenuOpen ? 'rotate-180' : ''}`} />
+            </button>
+            <AnimatePresence>
+              {isMenuOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute top-full left-1/2 -translate-x-1/2 pt-4"
+                >
+                  <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 overflow-hidden min-w-[160px]">
+                    <Link 
+                      href="/" 
+                      onClick={closeMenu}
+                      className="block px-4 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors"
+                    >
+                      Home
+                    </Link>
+                    <Link 
+                      href="/chat" 
+                      onClick={closeMenu}
+                      className="block px-4 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors"
+                    >
+                      Chat
+                    </Link>
+                    <Link 
+                      href="/about" 
+                      onClick={closeMenu}
+                      className="block px-4 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors"
+                    >
+                      About
+                    </Link>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        </div>
+
+        <div className="flex items-center justify-end space-x-4">
           <ThemeToggle />
           <motion.div
             initial={{ opacity: 0, y: -20 }}
