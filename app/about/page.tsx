@@ -63,60 +63,7 @@ export default function About() {
           </div>
         </motion.nav>
 
-        {/* Mobile Navigation */}
-        {/* <div className="md:hidden flex-1 flex items-center justify-center">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="relative"
-          >
-            <button 
-              onClick={toggleMenu}
-              className="flex items-center space-x-1 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
-            >
-              <span>Menu</span>
-              <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isMenuOpen ? 'rotate-180' : ''}`} />
-            </button>
-            <AnimatePresence>
-              {isMenuOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute top-full left-1/2 -translate-x-1/2 pt-4"
-                >
-                  <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 overflow-hidden min-w-[160px]">
-                    <Link 
-                      href="/" 
-                      onClick={closeMenu}
-                      className="block px-4 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors"
-                    >
-                      Home
-                    </Link>
-                    <Link 
-                      href="/chat" 
-                      onClick={closeMenu}
-                      className="block px-4 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors"
-                    >
-                      Chat
-                    </Link>
-                    <Link 
-                      href="/about" 
-                      onClick={closeMenu}
-                      className="block px-4 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors"
-                    >
-                      About
-                    </Link>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        </div> */}
-
-        <div className="flex items-center justify-end space-x-4">
+        <div className="flex-1 flex items-center justify-end space-x-4">
           {/* <ThemeToggle /> */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
