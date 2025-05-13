@@ -260,19 +260,21 @@ export default function Home() {
       </motion.div>
 
       {/* Waitlist Modal */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {isWaitlistOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
             className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
             onClick={() => setIsWaitlistOpen(false)}
           >
             <motion.div
-              initial={{ scale: 0.9, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 20 }}
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.2 }}
               className="bg-white dark:bg-gray-800 backdrop-blur-lg rounded-2xl p-8 max-w-md w-full shadow-2xl border border-gray-200/50 dark:border-gray-700/50"
               onClick={(e) => e.stopPropagation()}
             >
@@ -280,7 +282,7 @@ export default function Home() {
                 <h2 className="text-2xl font-bold text-black dark:text-white">Join Euclid Beta</h2>
                 <button
                   onClick={() => setIsWaitlistOpen(false)}
-                  className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-300 hover:rotate-90"
+                  className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
                 >
                   <X size={24} />
                 </button>
@@ -299,7 +301,7 @@ export default function Home() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="Euclid User"
-                      className="w-full transition-shadow hover:shadow-md focus:shadow-lg"
+                      className="w-full"
                     />
                   </div>
                   <div>
@@ -313,7 +315,7 @@ export default function Home() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="example@euclid.ai"
-                      className="w-full transition-shadow hover:shadow-md focus:shadow-lg"
+                      className="w-full"
                     />
                   </div>
                   {error && <p className="text-red-500 text-sm">{error}</p>}
@@ -321,7 +323,7 @@ export default function Home() {
                     type="submit"
                     disabled={isLoading}
                     className={cn(
-                      "w-full bg-black dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 text-white py-5 rounded-lg transition-all duration-300 hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98]",
+                      "w-full bg-black dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 text-white py-5 rounded-lg transition-colors",
                       isLoading && "opacity-70 cursor-not-allowed"
                     )}
                   >
@@ -330,26 +332,20 @@ export default function Home() {
                 </form>
               ) : (
                 <motion.div 
-                  initial={{ opacity: 0, y: 10 }} 
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   className="text-center py-8"
                 >
                   <div className="mb-4 text-green-500 flex justify-center">
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ type: "spring", stiffness: 200, damping: 10 }}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-16 w-16"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-16 w-16"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </motion.div>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
                   </div>
                   <h3 className="text-xl font-medium mb-2 text-black dark:text-white">You're on the list!</h3>
                   <p className="text-gray-500">We'll notify you when Euclid is ready for you.</p>
