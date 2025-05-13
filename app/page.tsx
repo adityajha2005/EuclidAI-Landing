@@ -116,23 +116,25 @@ export default function Home() {
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 flex items-center justify-between px-6 py-4 z-10 bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-sm">
         <div className="flex-1 flex items-center justify-start">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-200"
-          >
-            Euclid
-          </motion.div>
+          <Link href="/">
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-200"
+            >
+              Euclid
+            </motion.div>
+          </Link>
         </div>
 
         <motion.nav
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex-1 flex items-center justify-center"
+          className="hidden md:flex flex-1 items-center justify-center"
         >
-          <div className="flex items-center space-x-[120px]">
+          <div className="flex items-center space-x-8 lg:space-x-12">
             <Link 
               href="/" 
               className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
@@ -155,7 +157,7 @@ export default function Home() {
         </motion.nav>
 
         <div className="flex-1 flex items-center justify-end space-x-4">
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}

@@ -64,7 +64,7 @@ export default function About() {
         </motion.nav>
 
         {/* Mobile Navigation */}
-        <div className="md:hidden flex-1 flex items-center justify-center">
+        {/* <div className="md:hidden flex-1 flex items-center justify-center">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -114,10 +114,10 @@ export default function About() {
               )}
             </AnimatePresence>
           </motion.div>
-        </div>
+        </div> */}
 
         <div className="flex items-center justify-end space-x-4">
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
