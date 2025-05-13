@@ -134,7 +134,7 @@ export default function Home() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="hidden md:flex flex-1 items-center justify-center"
         >
-          <div className="flex items-center space-x-8 lg:space-x-12">
+          <div className="flex items-center space-x-[120px]">
             <Link 
               href="/" 
               className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
